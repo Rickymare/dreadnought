@@ -18,3 +18,6 @@ git clone -b v1.5.x https://github.com/NodeBB/NodeBB.git nodebb
 
 # Install NodeBB
 npm install --production nodebb/
+
+# Starting the server
+npm start
