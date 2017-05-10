@@ -50,7 +50,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "data" do |data|
 
     data.vm.box = "ubuntu/xenial64"
-    data.vm.network :private_network, ip: "192.168.56.10" 
+    data.vm.network :private_network, ip: "192.168.56.30" 
     data.vm.provision :shell, path: "data/data.sh"
     data.vm.synced_folder "data/", "/data"
 
