@@ -1,10 +1,5 @@
 Vagrant.configure(2) do |config|
 
-  if Vagrant.has_plugin?("vagrant-vbguest")
-    config.vbguest.auto_update = false
-  end
-
-
   config.vm.define "lb" do |lb|
 
     lb.vm.box = "ubuntu/xenial64"
