@@ -12,8 +12,12 @@ echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" 
 # Updating APT
 apt update -y
 
-# Installing MongoDB package
-apt install -y mongodb-org
+# Installing MongoDB and MySQL server.
+apt install -y mongodb-org mysql-server
+
+# Pre-seeding debconf with MySQL server answers
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password password'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password password'
 
 # Creating a file to manage the MongoDB service.
 echo "[Unit]
@@ -33,4 +37,7 @@ systemctl start mongodb
 # Automatically start MongoDB when server starts
 systemctl enable mongodb
 
-echo "hey! I am at the end of the script"
+# Restarting MySQL
+systemctl restart mysql.server
+
+echo "MongoDB and MySQL have been installed!"
