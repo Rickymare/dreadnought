@@ -38,6 +38,6 @@ systemctl start mongodb
 systemctl enable mongodb
 
 # Restarting MySQL
-systemctl restart mysql.server
+systemctl restart mysql.service
 
 echo "MongoDB and MySQL have been installed!"
