@@ -19,6 +19,12 @@ debconf-set-selections <<< 'mysql-server mysql-server/root_password_again passwo
 # Installing MongoDB and MySQL server.
 apt install -y mongodb-org mysql-server
 
+# Create Database, User, Password, and grant privileges in MySQL
+mysql -uroot -ppassword -e "CREATE DATABASE magento;"
+mysql -uroot -ppassword -e "CREATE USER 'magentouser'@'localhost' IDENTIFIED BY 'password';"
+mysql -uroot -ppassword -e "GRANT ALL PRIVILEGES ON magento.* TO 'magentouser'@'localhost';"
+mysql -uroot -ppassword -e "FLUSH PRIVILEGES;"
+
 # Creating a file to manage the MongoDB service.
 echo "[Unit]
 Description=High-performance, schema-free document-oriented database
